@@ -1,9 +1,9 @@
-import { FilmData } from '../mock/films';
+import Film from '../types/film';
 import PromoCardProps from './promo-card-props';
 
 type AppProps = {
   promoCardProps : PromoCardProps,
-  films : FilmData[],
+  films : Film[],
 }
 
 export default AppProps;

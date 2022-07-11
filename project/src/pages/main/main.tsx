@@ -1,6 +1,6 @@
 import React from 'react';
 import FilmCard from '../../components/film-card/film-card';
-import {FilmData} from '../../mock/films';
+import Film from '../../types/film';
 import AppProps from '../../types/app-props';
 
 
@@ -107,8 +107,8 @@ function Main({promoCardProps, films} : AppProps) : JSX.Element{
 
           <div className="catalog__films-list">
 
-            {films.map((element : FilmData) => (
-              <FilmCard key={element.id} imageSrc={element.src} title={element.title}/>
+            {films.map((element : Film) => (
+              <FilmCard key={element.id} imageSrc={element.previewImage} title={element.name}/>
             ))}
           </div>
 
