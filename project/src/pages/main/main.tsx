@@ -1,10 +1,15 @@
 import React from 'react';
-import FilmCard from '../../components/film-card/film-card';
-import Film from '../../types/film';
-import AppProps from '../../types/app-props';
+
+import MainProps from '../../types/props/main-props';
+import Footer from '../../components/footer/footer';
+import FilmList from '../../components/films-list/film-list';
+import UserBlock from '../../components/user-block/user-block';
+import Logo from '../../components/logo/logo';
 
 
-function Main({promoCardProps, films} : AppProps) : JSX.Element{
+function Main({promoFilm, films, user, favoriteFilms} : MainProps) : JSX.Element{
+  const favoriteFilmsCount = favoriteFilms.length;
+
   return (
     <React.Fragment>
       <section className="film-card">
@@ -15,37 +20,22 @@ function Main({promoCardProps, films} : AppProps) : JSX.Element{
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo/>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+          <UserBlock user={user}/>
         </header>
 
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={promoFilm.posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promoCardProps.title}</h2>
+              <h2 className="film-card__title">{promoFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{promoCardProps.genre}</span>
-                <span className="film-card__year">{promoCardProps.year}</span>
+                <span className="film-card__genre">{promoFilm.genre}</span>
+                <span className="film-card__year">{promoFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -60,7 +50,7 @@ function Main({promoCardProps, films} : AppProps) : JSX.Element{
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">9</span>
+                  <span className="film-card__count">{favoriteFilmsCount}</span>
                 </button>
               </div>
             </div>
@@ -105,31 +95,15 @@ function Main({promoCardProps, films} : AppProps) : JSX.Element{
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-
-            {films.map((element : Film) => (
-              <FilmCard key={element.id} imageSrc={element.previewImage} title={element.name}/>
-            ))}
-          </div>
+          <FilmList films={films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+        <Footer/>
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
       </div>
     </React.Fragment>);
 }

@@ -1,4 +1,4 @@
-import { AuthorisationStatus } from '../constants';
+import { AuthorisationStatus } from '../../constants';
 
 type PrivateRouteProps = {
   children: JSX.Element,

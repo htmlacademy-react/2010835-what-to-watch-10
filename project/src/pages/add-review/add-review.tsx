@@ -1,6 +1,15 @@
 import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Logo from '../../components/logo/logo';
+import UserBlock from '../../components/user-block/user-block';
+import AddReviewProps from '../../types/props/add-review-props';
+import { lightenDarkenColor } from '../../utils';
 
-function AddReview() : JSX.Element{
+function AddReview({films, user} : AddReviewProps) : JSX.Element{
+  const params = useParams();
+  const id = params.id;
+  const film = films.find((element) => element.id === Number(id));
+
   return (
     <React.Fragment>
       <div className="visually-hidden">
@@ -32,27 +41,21 @@ function AddReview() : JSX.Element{
         </svg>
       </div>
 
-      <section className="film-card film-card--full">
+      <section className="film-card film-card--full" style={{backgroundColor: film?.backgroundColor}}>
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={film?.backgroundImage} alt="The Grand Budapest Hotel" />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
+            <Logo/>
 
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                  <Link to={`/films/${film?.id}`} className="breadcrumbs__link">{film?.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -60,20 +63,11 @@ function AddReview() : JSX.Element{
               </ul>
             </nav>
 
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
-              </li>
-            </ul>
+            <UserBlock user={user}/>
           </header>
 
           <div className="film-card__poster film-card__poster--small">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={film?.posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
         </div>
 
@@ -113,10 +107,10 @@ function AddReview() : JSX.Element{
               </div>
             </div>
 
-            <div className="add-review__text">
+            <div className="add-review__text" style={{backgroundColor: lightenDarkenColor(film?.backgroundColor, 10)}}>
               <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
               <div className="add-review__submit">
-                <button className="add-review__btn" type="submit">Post</button>
+                <button className="add-review__btn" type="submit" style={{color: lightenDarkenColor(film?.backgroundColor, -80)}}>Post</button>
               </div>
             </div>
           </form>

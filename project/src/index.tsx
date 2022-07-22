@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import PromoCardProps from '../src/types/promo-card-props';
-import {films} from '../src/mock/films';
+import {films, promoFilm} from '../src/mock/films';
+import { user } from './mock/user';
 
-const promoCardProps : PromoCardProps = {
-  title: 'The Grand Budapest Hotel',
-  genre: 'Drama',
-  year: 2014,
-};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App promoCardProps={promoCardProps} films={films}/>
+    <App promoFilm={promoFilm} films={films} user={user}/>
   </React.StrictMode>,
 );
