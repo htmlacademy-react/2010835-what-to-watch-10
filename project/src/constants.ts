@@ -12,3 +12,7 @@ export enum AppRoute {
   Mylist = '/mylist',
 }
 
+export const DARKEN_COEFFICIENT = -80;
+export const LIGHTEN_COEFFICIENT = 10;
+
+export const DEFAULT_FILM_RATING = 8;
