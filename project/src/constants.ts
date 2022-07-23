@@ -15,4 +15,5 @@ export enum AppRoute {
 export const DARKEN_COEFFICIENT = -80;
 export const LIGHTEN_COEFFICIENT = 10;
 
-export const DEFAULT_FILM_RATING = 8;
+export const DEFAULT_FILM_RATING = 0;
+export const MAX_FILM_RATING = 10;

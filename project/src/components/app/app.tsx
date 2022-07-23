@@ -20,7 +20,7 @@ function App({promoFilm, films, user} : AppProps): JSX.Element {
         <Route path={AppRoute.Film} element={<FilmPage films={films} user={user} favoriteFilms={favoriteFilms}/>}/>
         <Route path={AppRoute.AddReview} element={<PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><AddReview films={films} user={user}/></PrivateRoute>}/>
         <Route path={AppRoute.Player} element={<Player films={films}/>} />
-        <Route path={AppRoute.Mylist} element={<PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><MyList films={favoriteFilms} user={user}/></PrivateRoute>}/>
+        <Route path={AppRoute.Mylist} element={<PrivateRoute authorisationStatus={AuthorisationStatus.Auth}><MyList films={films} user={user}/></PrivateRoute>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </BrowserRouter>

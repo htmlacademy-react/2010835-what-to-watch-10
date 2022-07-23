@@ -1,7 +1,7 @@
+import Film from '../film';
+
 type FilmCardProps = {
-  id: number,
-  imageSrc : string,
-  title : string,
+  film : Film,
 }
 
 export default FilmCardProps;

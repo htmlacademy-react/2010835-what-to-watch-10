@@ -9,6 +9,7 @@ function AddReview({films, user} : AddReviewProps) : JSX.Element{
   const params = useParams();
   const id = params.id;
   const film = films.find((element) => element.id === Number(id));
+  const imagePosterAlt = `${film?.name} poster`;
 
   return (
     <React.Fragment>
@@ -44,7 +45,7 @@ function AddReview({films, user} : AddReviewProps) : JSX.Element{
       <section className="film-card film-card--full" style={{backgroundColor: film?.backgroundColor}}>
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img src={film?.backgroundImage} alt="The Grand Budapest Hotel" />
+            <img src={film?.backgroundImage} alt={film?.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -67,7 +68,7 @@ function AddReview({films, user} : AddReviewProps) : JSX.Element{
           </header>
 
           <div className="film-card__poster film-card__poster--small">
-            <img src={film?.posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={film?.posterImage} alt={imagePosterAlt} width="218" height="327" />
           </div>
         </div>
 

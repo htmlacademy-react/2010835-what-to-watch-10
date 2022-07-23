@@ -18,7 +18,7 @@ function FilmList({films} : FilmListProps) : JSX.Element{
   return (
     <div className="catalog__films-list" onMouseOver={mouseOverHandler}>
       {films.map((element : Film) => (
-        <FilmCard key={element.id} id={element.id} imageSrc={element.previewImage} title={element.name}/>
+        <FilmCard key={element.id} film={element}/>
       ))}
     </div>
   );
