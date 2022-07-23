@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
+import { AppLink } from '../../constants';
 import FilmProps from '../../types/props/film-props';
 import { getRatingLevel } from '../../utils';
 
@@ -70,7 +72,7 @@ function FilmPage({films, user, favoriteFilms} : FilmProps) : JSX.Element{
 
               <div className="film-card__buttons">
                 <button className="btn btn--play film-card__button" type="button">
-                  <Link className='play-link' to={`/player/${film?.id}`}>
+                  <Link className='play-link' to={`/${AppLink.Player}/${film?.id}`}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -84,7 +86,7 @@ function FilmPage({films, user, favoriteFilms} : FilmProps) : JSX.Element{
                   <span>My list</span>
                   <span className="film-card__count">{favoriteFilmsCount}</span>
                 </button>
-                <Link to={'review'} className="btn film-card__button">Add review</Link>
+                <Link to={AppLink.Review} className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -174,19 +176,7 @@ function FilmPage({films, user, favoriteFilms} : FilmProps) : JSX.Element{
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </React.Fragment>
   );

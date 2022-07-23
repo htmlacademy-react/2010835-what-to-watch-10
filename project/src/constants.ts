@@ -5,11 +5,20 @@ export enum AuthorisationStatus {
 }
 
 export enum AppRoute {
+  Root = '/',
   SignIn = '/login',
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Player = '/player/:id',
   Mylist = '/mylist',
+}
+
+export enum AppLink {
+  Root = '/',
+  Films = 'films',
+  Player = 'player',
+  Review = 'review',
+  Mylist = 'mylist',
 }
 
 export const DARKEN_COEFFICIENT = -80;

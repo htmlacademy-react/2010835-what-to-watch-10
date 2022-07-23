@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppLink } from '../../constants';
 import FilmCardProps from '../../types/props/film-card-props';
 
 
@@ -10,7 +11,7 @@ function FilmCard({film} : FilmCardProps) : JSX.Element{
         <img src={film.previewImage} alt={film.name} width="280" height="175"/>
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`/films/${film.id.toString()}`}>{film.name}</Link>
+        <Link className="small-film-card__link" to={`/${AppLink.Films}/${film.id.toString()}`}>{film.name}</Link>
       </h3>
     </div>
   );
