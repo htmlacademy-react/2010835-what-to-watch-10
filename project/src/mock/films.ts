@@ -23,7 +23,7 @@ const filmsData : Film[] = [
     genre: 'Comedy',
     released: 2000,
     id: 1,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: 'https://10.react.pages.academy/static/film/video/matrix.mp4',
     previewVideoLink: 'https://10.react.pages.academy/static/film/video/dog.mp4'
   },
@@ -69,7 +69,7 @@ const filmsData : Film[] = [
     genre: 'Adventure',
     released: 2005,
     id: 3,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: 'https://10.react.pages.academy/static/film/video/matrix.mp4',
     previewVideoLink: 'https://10.react.pages.academy/static/film/video/traffic.mp4'
   },
@@ -213,10 +213,34 @@ const filmsData : Film[] = [
   },
 ];
 
+const promoFilm = {
+  id: 10,
+  name: 'The Grand Budapest Hotel',
+  posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
+  previewImage: 'img/the-grand-budapest-hotel.jpg',
+  backgroundImage: 'img/the-grand-budapest-hotel-bg.jpg',
+  backgroundColor: '#ffffff',
+  videoLink: 'https://some-link',
+  previewVideoLink: 'https://some-link',
+  description: 'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.',
+  rating: 8.9,
+  scoresCount: 240,
+  director: 'Wes Anderson',
+  starring: [
+    'Bill Murray'
+  ],
+  runTime: 99,
+  genre: 'Comedy',
+  released: 2014,
+  isFavorite: false
+};
+
 const getRandomFilm = () : Film => ({...filmsData[getRandomPositiveNumber(0, filmsData.length - 1)], id: generateId()});
 
 const films : Film[] = Array.from({ length: 20 }, getRandomFilm);
 
-export { films };
+const favoriteFilms : Film[] = Array.from({ length: 7 }, getRandomFilm);
+
+export { films, favoriteFilms, promoFilm };
 
 
